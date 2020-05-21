@@ -1,0 +1,17 @@
+{
+  "name": "apollo",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "login": "bw logout && bw login --raw product@bitsofgood.org",
+    "sync": "bw list items --search 'apollo/env' | jq -r '.[].notes' > .env"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "next": "9.4.4",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  }
+}
