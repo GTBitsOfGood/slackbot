@@ -1,18 +1,19 @@
-import { register } from "server/actions/user";
+import { checkin } from "server/actions/user";
 import { success, failure } from "utils/blocks";
 
-// @route   POST api/register
-// @desc    User Registration
+// @route   POST api/checkin
+// @desc    Weekly Check-In
 // @access  Public
 const handler = (req, res) => {
   const slackId = req.body.user_id;
-  const username = req.body.user_name;
+  const password = req.body.text.trim();
 
-  return register(slackId, username)
+  return checkin(slackId, password)
     .then(user => {
-      const content = `Hello and welcome, *@${user.username}*! `
-        + `To see a list of valid commands, simply click on my `
-        + `profile picture. :blobhappy:`;
+      const content = `Thanks for coming, *@${user.username}*! `
+        + `You've received a bit for your attendance, putting `
+        + `you at a total of *${user.totalBits + 1}* `
+        + `${!user.totalBits ? "bit" : "bits"}. :bobeyebrow:`;
 
       res.status(200).json({
         success: true,

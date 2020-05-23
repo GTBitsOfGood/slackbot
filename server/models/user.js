@@ -21,6 +21,11 @@ const userSchema = new Schema({
     type: String,
     required: false,
     default: "None"
+  },
+  checkedIn: {
+    type: Boolean,
+    required: false,
+    default: false
   }
 });
 
