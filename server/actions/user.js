@@ -1,6 +1,8 @@
 import Connection from "server/connection";
 import User from "server/models/user";
+import Info from "server/models/info";
 import errors from "utils/errors";
+import bcrypt from "bcryptjs";
 
 export async function register(slackId, username) {
   await Connection();
@@ -13,22 +15,24 @@ export async function register(slackId, username) {
 export async function checkin(slackId, password) {
   await Connection();
 
+  const { checkinPassword, checkinActive } = await Info.findOne();
+  const match = await bcrypt.compare(password, checkinPassword);
   const user = await User.findOne({ slackId });
-  const info = await User.findOne({ slackId: "INFO" });  // fixme (!)
-  const match = (password === info.username);            // fixme (!)
 
-  if (user) {
-    if (match && !user.checkedIn) {
-      await User.updateOne(
-        { slackId }, {
-        $inc: { totalBits: 1 },
-        $set: { checkedIn: true }
-      });
-      return user;
-    }
-    throw new Error(user.checkedIn
-      ? errors.user.ALREADY_CHECKED
-      : errors.user.WRONG_PASSWORD);
-  }
-  throw new Error(errors.user.DOESNT_EXIST);
+  if (!user)
+    throw new Error(errors.user.DOESNT_EXIST);
+  else if (!checkinActive)
+    throw new Error(errors.user.NOT_ACTIVE);
+  else if (user.checkedIn)
+    throw new Error(errors.user.ALREADY_CHECKED);
+  else if (!match)
+    throw new Error(errors.user.WRONG_PASSWORD);
+
+  await User.updateOne(
+    { slackId }, {
+    $set: { checkedIn: true },
+    $inc: { totalBits: 1 }
+  });
+
+  return user;
 };

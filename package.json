@@ -9,6 +9,7 @@
     "sync": "bw list items --search 'apollo/env' | jq -r '.[].notes' > .env"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
     "mongoose": "^5.9.16",
     "next": "9.4.4",
