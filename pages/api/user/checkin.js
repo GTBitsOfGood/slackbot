@@ -13,7 +13,7 @@ const handler = (req, res) => {
       const content = `Thanks for coming, *@${user.username}*! `
         + `You've received a bit for your attendance, putting `
         + `you at a total of *${user.totalBits + 1}* `
-        + `${!user.totalBits ? "bit" : "bits"}. :bobeyebrow:`;
+        + `${!user.totalBits ? "bit" : "bits"}. :rocket:`;
 
       res.status(200).json({
         success: true,

@@ -1,7 +1,7 @@
 .container {
   display: flex;
   min-height: 100vh;
-  padding: 0 0.5rem;
+  padding: 1rem 2rem;
   align-items: center;
   flex-direction: column;
   justify-content: center;
@@ -23,15 +23,15 @@ a {
 }
 
 .logo {
-  height: 35px;
+  height: 25px;
+  opacity: 0.20;
   position: absolute;
   top: 15px; right: 15px;
-  filter: grayscale(100%);
   transition: all 0.5s ease;
 }
 
 .logo:hover {
-  filter: grayscale(0%);
+  opacity: 0.75;
 }
 
 .title a {
@@ -49,12 +49,15 @@ a {
   margin: 0;
   font-size: 4rem;
   line-height: 1.15;
+  text-align: center;
 }
 
 .description {
+  color: #888888;
   line-height: 1.0;
   font-weight: 600;
   font-size: 1.5rem;
+  text-align: center;
 }
 
 .grid {
@@ -68,7 +71,7 @@ a {
 
 .card {
   margin: 1rem;
-  color: inherit;
+  color: #555555;
   flex-basis: 45%;
   padding: 1.5rem;
   text-align: left;
@@ -81,8 +84,8 @@ a {
 .card:hover,
 .card:focus,
 .card:active {
-  color: #e03a3a;
-  border-color: #e03a3a;
+  color: #dd5555;
+  border-color: #dd5555;
 }
 
 .card h3 {

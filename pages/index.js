@@ -10,8 +10,8 @@ export default function Home() {
       </Head>
 
       <main>
-        <a href="https://www.bitsofgood.org">
-          <img src="/logo.png" className="logo"/>
+        <a href="https://github.com/nichabosh/apollo" target="_blank">
+          <img src="https://bit.ly/2TUgcWp" className="logo"/>
         </a>
 
         <h1 className="title">

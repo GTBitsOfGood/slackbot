@@ -12,7 +12,7 @@ const handler = (req, res) => {
     .then(user => {
       const content = `Hello and welcome, *@${user.username}*! `
         + `To see a list of valid commands, simply click on my `
-        + `profile picture. :blobhappy:`;
+        + `profile picture. :tada:`;
 
       res.status(200).json({
         success: true,
