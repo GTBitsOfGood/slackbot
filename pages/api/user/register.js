@@ -1,7 +1,7 @@
 import { register } from "server/actions/user";
 import { success, failure } from "utils/blocks";
 
-// @route   POST api/register
+// @route   POST api/user/register
 // @desc    User Registration
 // @access  Public
 const handler = (req, res) => {

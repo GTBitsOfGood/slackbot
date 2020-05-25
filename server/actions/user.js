@@ -2,7 +2,6 @@ import Connection from "server/connection";
 import User from "server/models/user";
 import Info from "server/models/info";
 import errors from "utils/errors";
-import bcrypt from "bcryptjs";
 
 export async function register(slackId, username) {
   await Connection();
@@ -16,8 +15,8 @@ export async function checkin(slackId, password) {
   await Connection();
 
   const { checkinPassword, checkinActive } = await Info.findOne();
-  const match = await bcrypt.compare(password, checkinPassword);
   const user = await User.findOne({ slackId });
+  const match = password === checkinPassword;
 
   if (!user)
     throw new Error(errors.user.DOESNT_EXIST);
