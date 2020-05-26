@@ -9,7 +9,6 @@
     "sync": "bw list items --search 'apollo/env' | jq -r '.[].notes' > .env"
   },
   "dependencies": {
-    "dotenv": "^8.2.0",
     "mongoose": "^5.9.16",
     "next": "9.4.4",
     "random-words": "^1.1.1",
