@@ -11,7 +11,7 @@ Visit us at [bitsofgood.org](https://bitsofgood.org) to learn more.
 
 ## Contributing
 
-If you are in Bits of Good, please use our [Contribution guide](https://github.com/GTBitsOfGood/bog-bot/blob/master/CONTRIBUTING.md) to get started. We would be thrilled to have you help out!
+If you are in Bits of Good, please use our [Contribution guide](https://github.com/GTBitsOfGood/bog-bot/blob/master/CONTRIBUTING.md) to get started.
 
 ### Contributors
 
