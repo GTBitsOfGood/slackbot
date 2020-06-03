@@ -1,0 +1,37 @@
+# mac
+.DS_Store
+.LSOverride
+.AppleDB
+.AppleDesktop
+
+# windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# environment
+.env
+.env.test.local
+.env.local
+.env.development.local
+.env.production.local
+
+# package manager
+node_modules/
+yarn-debug.log*
+yarn-error.log*
+coverage/
+.pnp.js
+/.pnp
+build/
+*.log
+.npm
+
+# nextjs
+/.next/
+/out/
+
+# other
+.vercel
+.idea
+dist
