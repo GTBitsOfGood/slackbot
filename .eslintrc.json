@@ -6,7 +6,9 @@
   },
   "extends": [
     "plugin:react/recommended",
-    "airbnb"
+    "airbnb",
+    "plugin:jest/recommended",
+    "plugin:jest/style"
   ],
   "globals": {
     "Atomics": "readonly",
@@ -19,7 +21,7 @@
     "ecmaVersion": 11,
     "sourceType": "module"
   },
-  "plugins": ["react"],
+  "plugins": ["react", "jest"],
   "rules": {
     "comma-dangle": ["error", "never"],
     "quotes": [2, "double", { "avoidEscape": true }]
