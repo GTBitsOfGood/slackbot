@@ -4,18 +4,18 @@ export default function Home() {
   return (
     <div className="container">
       <Head>
-        <title>Apollo</title>
+        <title>Bits of Good | Slack Bot</title>
         <link href="/favicon.png" rel="icon"/>
         <link href="/index.css" rel="stylesheet"/>
       </Head>
 
       <main>
-        <a href="https://github.com/nichabosh/apollo" target="_blank">
+        <a href="https://www.github.com/gtbitsofgood/bog-bot" target="_blank">
           <img src="https://bit.ly/2TUgcWp" className="logo"/>
         </a>
 
         <h1 className="title">
-          Hey, it's <a>Apollo!</a>
+          Hey, it's <a>bog-bot!</a>
         </h1>
 
         <p className="description">

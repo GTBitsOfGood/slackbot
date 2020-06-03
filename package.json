@@ -1,12 +1,12 @@
 {
-  "name": "apollo",
+  "name": "bog-bot",
   "version": "0.1.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "login": "bw logout && bw login --raw product@bitsofgood.org",
-    "sync": "bw list items --search 'apollo/env' | jq -r '.[].notes' > .env"
+    "env-login": "bw logout && bw login --raw product@bitsofgood.org",
+    "env-sync": "bw sync && bw list items --search 'bog-bot/env' | jq -r '.[].notes' > .env"
   },
   "dependencies": {
     "mongoose": "^5.9.16",
