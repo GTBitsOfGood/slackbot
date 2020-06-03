@@ -11,7 +11,7 @@ assignees: ''
 Give a clear 2-3 sentence description of your feature here.
 
 **Detailed explanation**
-Elaborate on your initial description of the featurre, including its components.
+Elaborate on your initial description of the feature, including its components.
 
 **Mockups**
 If available, include design mockups that others can use as reference.
