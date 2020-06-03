@@ -1,6 +1,6 @@
 # The Bits of Good Bot
 
-Bits of Good members have a lot on their plates. Between school, BoG, and other activities, they are constantly swamped with work. To help them out, we've created a bot that helps automate the pain out of their BoG workflow. Features include...
+Bits of Good members have a lot on their plates. Between school, BoG, and other activities, they are constantly swamped with work! To help them out, we've created a bot that helps automate the pain out of their BoG workflow. Features include...
 
 - **General Meeting check-ins** for all 150+ members
 - **[Donut Dates](https://www.donut.com/pairing/)** for BoGgers to get to know their BoG pals
