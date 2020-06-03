@@ -10,11 +10,11 @@ export default async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false,
-      useCreateIndex: true,
+      useCreateIndex: true
     })
-    .catch(error => {
+    .catch((error) => {
       console.error("Database connection failed. ↓");
-      console.error(" > " + error);
+      console.error(` > ${error}`);
       throw error;
     });
 };

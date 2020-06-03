@@ -5,6 +5,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "lint": "eslint --fix .",
     "env-login": "bw logout && bw login --raw product@bitsofgood.org",
     "env-sync": "bw sync && bw list items --search 'bog-bot/env' | jq -r '.[].notes' > .env"
   },
@@ -14,5 +15,13 @@
     "random-words": "^1.1.1",
     "react": "16.13.1",
     "react-dom": "16.13.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^2.5.1"
   }
 }
