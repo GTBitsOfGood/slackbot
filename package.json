@@ -13,7 +13,6 @@
     "debug": "^4.1.1",
     "mongoose": "^5.9.16",
     "next": "9.4.4",
-    "random-words": "^1.1.1",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   },
