@@ -2,7 +2,7 @@
   "name": "bog-bot",
   "version": "0.1.0",
   "scripts": {
-    "dev": "next dev",
+    "dev": "DEBUG=db next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint --fix .",
@@ -10,6 +10,7 @@
     "env-sync": "bw sync && bw list items --search 'bog-bot/env' | jq -r '.[].notes' > .env"
   },
   "dependencies": {
+    "debug": "^4.1.1",
     "mongoose": "^5.9.16",
     "next": "9.4.4",
     "random-words": "^1.1.1",

@@ -1,5 +1,8 @@
 import mongoose from "mongoose";
-import config from "utils/config";
+import * as _debug from "debug";
+import config from "../utils/config";
+
+const debug = _debug("db");
 
 export default async () => {
   if (mongoose.connections[0].readyState) return;
@@ -13,8 +16,8 @@ export default async () => {
       useCreateIndex: true
     })
     .catch((error) => {
-      console.error("Database connection failed. ↓");
-      console.error(` > ${error}`);
+      debug("Database connection failed. ↓");
+      debug(` > ${error}`);
       throw error;
     });
 };
