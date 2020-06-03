@@ -2,7 +2,7 @@
 
 We happily invite any member of Bits of Good to contribute to the bot. Please read each of the following steps below to see how you can get started!
 
-1. Open or assign yourself to an [Issue](https://github.com/GTBitsOfGood/bog-bot/issues).
+1. Open or assign yourself to an Issue from our [Projects](https://github.com/GTBitsOfGood/bog-bot/projects) page.
 2. Create a new branch named using the following format:
 ```
 [your-first-name]/[issue-#]/[slug]
