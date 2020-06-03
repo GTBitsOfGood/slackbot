@@ -9,6 +9,12 @@ Bits of Good members have a lot on their plates. Between school, BoG, and other 
 
 Visit us at [bitsofgood.org](https://bitsofgood.org) to learn more.
 
+## Getting Started
+```javascript
+yarn && yarn dev
+```
+
+
 ## Contributing
 
 If you are in Bits of Good, please use our [Contribution guide](https://github.com/GTBitsOfGood/bog-bot/blob/master/CONTRIBUTING.md) to get started.
