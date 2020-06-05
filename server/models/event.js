@@ -17,9 +17,10 @@ const eventSchema = new Schema({
   },
   // the check-in code used to verify meeting attendance
   code: {
-    type: String
+    type: String,
+    required: true
   },
-  // the bits a user gets for checking into the event
+  // the bits a member gets for checking into the event
   bits: {
     type: Number,
     default: 0
