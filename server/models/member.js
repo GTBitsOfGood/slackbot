@@ -3,10 +3,10 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const { ObjectId } = Schema;
 
-const userSchema = new Schema({
+const memberSchema = new Schema({
   // alphanumeric string provided by slack -- cannot be
   // changed. used as a unique identifier in queries.
-  slackid: {
+  slackId: {
     type: String,
     unique: true,
     required: true
@@ -18,30 +18,23 @@ const userSchema = new Schema({
     unique: true,
     required: true
   },
-  // determines whether a user has permission to use a
-  // command. hierarchy: member → leader → executive.
+  // determines whether a member has permission to use a
+  // command. Current roles are "member", "leader", and "exec"
   role: {
     type: String,
-    default: "Member"
+    default: "member"
   },
-  // listing of all activites a user has been involved in.
-  // will be used for record-keeping & future reference.
-  activity: {
-    type: [ObjectId],
-    ref: "Event"
-  },
-  // users are assigned a project-team early on in the
-  // semester. will be used to group members together.
+  // the team (project, committee, etc.) a member is in
   team: {
     type: ObjectId,
-    ref: "Team"
+    ref: "Team",
+    required: true
   },
-  // total number of "bits" a user has accumulated. used
-  // to quantify one's contributions to the organization.
+  // the total number of Bits a member has accumulated.
   bits: {
     type: Number,
     default: 0
   }
 });
 
-module.exports = mongoose.models.User || mongoose.model("User", userSchema);
+module.exports = mongoose.models.Member || mongoose.model("Member", memberSchema);
