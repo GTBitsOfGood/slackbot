@@ -18,6 +18,16 @@ const memberSchema = new Schema({
     unique: true,
     required: true
   },
+  // the first name of the member
+  firstName: {
+    type: String,
+    required: true
+  },
+  // the last name of the member
+  lastName: {
+    type: String,
+    required: true
+  },
   // determines whether a member has permission to use a
   // command. Current roles are "member", "leader", and "exec"
   role: {
