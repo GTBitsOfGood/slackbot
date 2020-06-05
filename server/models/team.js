@@ -4,27 +4,18 @@ const { Schema } = mongoose;
 const { ObjectId } = Schema;
 
 const teamSchema = new Schema({
-  // the project's team name assigned by bits of good.
-  // will be used as a unique indentifier in queries.
+  // the name of the team in Bits of Good
   name: {
     type: String,
     unique: true,
     required: true
   },
-  // listing of users associated with a specific team.
-  // used to group team members with one another.
+  // a list of the members in a Bits of Good team
   members: {
     type: [ObjectId],
-    ref: "User"
+    ref: "Member",
+    default: []
   },
-  // listing of all activites a team has been involved in.
-  // will be used for record-keeping & future reference.
-  activity: {
-    type: [ObjectId],
-    ref: "Event"
-  },
-  // total number of bytes a team has accumulated. will be
-  // used to track contributions and byte-brawl outcomes.
   bytes: {
     type: Number,
     default: 0
