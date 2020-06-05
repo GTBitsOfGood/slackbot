@@ -4,33 +4,25 @@ const { Schema } = mongoose;
 const { ObjectId } = mongoose;
 
 const eventSchema = new Schema({
-  // provides information regarding the event's purpose.
-  // examples include meetings, donut dates, outings, etc.
-  type: {
+  // the name of the event
+  name: {
     type: String,
     required: true
   },
-  // listing of all users associated with an event. will
-  // be used to mark attendance & prevent double checkins.
+  // A list of all the members who attended the event
   participants: {
     type: [ObjectId],
-    ref: "User"
+    ref: "Member",
+    default: []
   },
-  // unix timestamp of when an event was created/occurred.
-  // useful for keeping track of dates, if they're needed.
-  timestamp: {
-    type: Date,
-    default: Date.now
-  },
-  // represents whether a meeting's check-in window is open.
-  // exclusively used for organization-wide, weekly meetings.
-  active: {
-    type: Boolean
-  },
-  // check-in code used to verify meeting attendenace. again,
-  // will only be used in the organization's weekly meetings.
+  // the check-in code used to verify meeting attendance
   code: {
     type: String
+  },
+  // the bits a user gets for checking into the event
+  bits: {
+    type: Number,
+    default: 0
   }
 });
 
