@@ -10,6 +10,12 @@ const teamSchema = new Schema({
     unique: true,
     required: true
   },
+  // the team type. Current values are
+  // "project", "committee", and "exec"
+  type: {
+    type: String,
+    required: true
+  },
   // a list of the members in a Bits of Good team
   members: {
     type: [ObjectId],
