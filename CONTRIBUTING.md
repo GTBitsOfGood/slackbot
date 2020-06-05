@@ -18,6 +18,8 @@ Then I would name my branch:
 george/57/email-support
 ```
 
+3. Do whatever the Issue asks in your branch.
+4. Write tests (we use [Jest](https://jestjs.io/)) in the `test/` directory that are relevant to your changes.
 3. Make a PR between your branch and `master` that links to the Issue you want to resolve.
 4. Get at least one other contributor to review your PR and make comments when necessary.
 5. Merge your PR once it has been approved!
