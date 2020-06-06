@@ -1,3 +1,5 @@
+import * as validateSlackRequest from "validate-slack-request";
+import config from "../../../utils/config";
 import connection from "../../../server/connection";
 import Member from "../../../server/models/member";
 import { Request, Response } from "../../../server/models/command";
@@ -6,29 +8,45 @@ import { Request, Response } from "../../../server/models/command";
 // @desc    Call a command
 // @access  Public
 export default async (req, res) => {
-  // TODO properly get slackId & other params
-  // from the Next.js req object
-  const {
-    query: { name, slackId }
-  } = req;
-  let member;
+  const { command: name, text: args, user_id: slackId } = req.body;
   let command;
 
+  // validate that the HTTP request was sent by Slack
   try {
-    command = await import(name);
+    if (!validateSlackRequest(config.slackSigningSecret, req)) {
+      res.status(401).send("Unauthorized");
+      return;
+    }
   } catch (e) {
-    // TODO send back a message saying
-    // the command was not found
+    // TODO log the error
+    res.status(500).send("Internal Server Error");
+    return;
   }
-  await connection();
+
+  // import the Command object for this command
   try {
-    member = await Member.findOne({ slackId });
-  } catch (_) {
-    // do nothing
+    command = await import(`./../../../server/commands/${name}`);
+  } catch (e) {
+    // TODO log that the command was not found.
+    res.status(404).send("Not Found");
+    return;
   }
+
+  // connect to the MongoDB database
+  try {
+    await connection();
+  } catch (e) {
+    // TODO log that the database connection failed.
+    res.status(500).send("Internal Server Error");
+    return;
+  }
+
+  // find the Member that has the Slack ID of the user who sent the command
+  const member = await Member.findOne({ slackId }).catch();
+
+  // run the handler for this command
   await command.handler(
-    // TODO add the other options to the Request
-    new Request({ member }),
+    new Request({ member, args }),
     new Response(res)
   );
 };
