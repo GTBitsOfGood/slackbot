@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
-const { Schema } = mongoose;
-const { ObjectId } = mongoose;
+const { Schema, SchemaTypes } = mongoose;
+const { ObjectId } = SchemaTypes;
 
 const eventSchema = new Schema({
   // the name of the event
@@ -11,8 +11,10 @@ const eventSchema = new Schema({
   },
   // A list of all the members who attended the event
   participants: {
-    type: [ObjectId],
-    ref: "Member",
+    type: [{
+      type: ObjectId,
+      ref: "Member"
+    }],
     default: []
   },
   // the check-in code used to verify meeting attendance

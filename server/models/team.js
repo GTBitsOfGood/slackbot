@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
-const { Schema } = mongoose;
-const { ObjectId } = Schema;
+const { Schema, SchemaTypes } = mongoose;
+const { ObjectId } = SchemaTypes;
 
 const teamSchema = new Schema({
   // the name of the team in Bits of Good
@@ -18,8 +18,10 @@ const teamSchema = new Schema({
   },
   // a list of the members in a Bits of Good team
   members: {
-    type: [ObjectId],
-    ref: "Member",
+    type: [{
+      type: ObjectId,
+      ref: "Member"
+    }],
     default: []
   },
   bytes: {

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
-const { Schema } = mongoose;
-const { ObjectId } = Schema;
+const { Schema, SchemaTypes } = mongoose;
+const { ObjectId } = SchemaTypes;
 
 const memberSchema = new Schema({
   // alphanumeric string provided by slack -- cannot be
