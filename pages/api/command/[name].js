@@ -32,6 +32,7 @@ export default async (req, res) => {
     return;
   }
 
+
   // connect to the MongoDB database
   try {
     await connection();
