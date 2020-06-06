@@ -16,6 +16,10 @@ export default async (req, res) => {
   const { command: name, text: args, user_id: slackId } = req.body;
   let command;
 
+  console.log(name, args, slackId);
+
+  console.log(req.query);
+
   // validate that the HTTP request was sent by Slack
   try {
     if (!validateSlackRequest(config.slackSigningSecret, req)) {
