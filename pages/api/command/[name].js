@@ -18,7 +18,7 @@ export default async (req, res) => {
 
   // validate that the HTTP request was sent by Slack
   try {
-    req.getHeader = req.get.bind(req);
+    req.get = req.getHeader.bind(req);
     if (!validateSlackRequest(config.slackSigningSecret, req)) {
       res.status(401).send("Unauthorized");
       return;
