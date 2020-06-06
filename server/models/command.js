@@ -25,7 +25,7 @@ import Role from "./role";
  * @throws {TypeError}
  */
 function Command(options, handler) {
-  if (typeof options !== "undefined") throw new TypeError("the options argument must be an object");
+  if (typeof options !== "object") throw new TypeError("the options argument must be an object");
   if (!options.name || typeof options.name !== "string") throw new TypeError("commands must have a name");
   this.name = options.name;
   if (!options.desc || typeof options.desc !== "string") throw new TypeError("commands must have a description");
