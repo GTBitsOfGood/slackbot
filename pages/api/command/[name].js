@@ -32,7 +32,7 @@ export default async (req, res) => {
 
   // import the Command object for this command
   try {
-    command = await import(`./../../../server/commands/${name.slice(1)}`);
+    command = (await import(`./../../../server/commands/${name.slice(1)}`)).default;
   } catch (e) {
     console.log(e, name.slice(1));
     // TODO log that the command was not found.
