@@ -7,8 +7,7 @@
   },
   "extends": [
     "plugin:react/recommended",
-    "airbnb",
-    "plugin:mocha/recommended"
+    "airbnb"
   ],
   "globals": {
     "Atomics": "readonly",
@@ -21,7 +20,7 @@
     "ecmaVersion": 11,
     "sourceType": "module"
   },
-  "plugins": ["mocha", "react"],
+  "plugins": ["react"],
   "rules": {
     "comma-dangle": ["error", "never"],
     "quotes": [2, "double", { "avoidEscape": true }],
