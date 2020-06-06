@@ -13,6 +13,7 @@ let err;
 describe("the Event schema", function () {
   before(async function () {
     await connection();
+    await clearModels(Member, Event);
   });
 
   beforeEach(function () {
