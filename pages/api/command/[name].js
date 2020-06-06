@@ -40,6 +40,7 @@ export default async (req, res) => {
     return;
   }
 
+  console.log("point A");
 
   // connect to the MongoDB database
   try {
@@ -51,8 +52,12 @@ export default async (req, res) => {
     return;
   }
 
+  console.log("point B");
+
   // find the Member that has the Slack ID of the user who sent the command
   const member = await Member.findOne({ slackId }).catch();
+
+  console.log("point C");
 
   // run the handler for this command
   await command.handler(
