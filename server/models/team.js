@@ -1,4 +1,5 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+import TeamType from "./teamType";
 
 const { Schema, SchemaTypes } = mongoose;
 const { ObjectId } = SchemaTypes;
@@ -10,11 +11,14 @@ const teamSchema = new Schema({
     unique: true,
     required: true
   },
-  // the team type. Current values are
-  // "project", "committee", and "exec"
+  // the team type. See the TeamType enum
   type: {
     type: String,
-    required: true
+    required: true,
+    validate: {
+      validator: (type) => TeamType.isType(type),
+      message: (props) => `"${props.value}" is not a value of the TeamType enum`
+    }
   },
   // a list of the members in a Bits of Good team
   members: {
@@ -30,4 +34,4 @@ const teamSchema = new Schema({
   }
 });
 
-module.exports = mongoose.models.Team || mongoose.model("Team", teamSchema);
+export default (mongoose.models.Team || mongoose.model("Team", teamSchema));
