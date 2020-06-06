@@ -14,7 +14,6 @@ export default async () => {
       useUnifiedTopology: true,
       useFindAndModify: false,
       useCreateIndex: true,
-      connectTimeoutMS: 500
     })
     .catch((error) => {
       debug("Database connection failed. ↓");
