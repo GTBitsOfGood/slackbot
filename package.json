@@ -6,7 +6,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --fix .",
-    "test": "jest --passWithNoTests",
+    "test": "mocha",
     "env-login": "bw logout && bw login --raw product@bitsofgood.org",
     "env-sync": "bw sync && bw list items --search 'bog-bot/env' | jq -r '.[].notes' > .env"
   },
@@ -25,6 +25,6 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-react-hooks": "^2.5.1",
-    "jest": "^26.0.1"
+    "mocha": "^7.2.0"
   }
 }
