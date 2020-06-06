@@ -1,5 +1,3 @@
-/* eslint-disable func-names,prefer-arrow-callback,no-unused-expressions */
-
 import * as chai from "chai";
 import connection from "../server/connection";
 import Member from "../server/models/member";
@@ -10,7 +8,7 @@ const { expect } = chai;
 let member;
 let err;
 
-describe("the Member schema", function () {
+describe("the Member model", function () {
   before(async function () {
     await connection();
     await clearModels(Member, Team);

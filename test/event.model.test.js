@@ -1,5 +1,3 @@
-/* eslint-disable func-names,prefer-arrow-callback,no-unused-expressions */
-
 import * as chai from "chai";
 import connection from "../server/connection";
 import Event from "../server/models/event";
@@ -10,7 +8,7 @@ const { expect } = chai;
 let event;
 let err;
 
-describe("the Event schema", function () {
+describe("the Event model", function () {
   before(async function () {
     await connection();
     await clearModels(Member, Event);
@@ -100,7 +98,7 @@ describe("the Event schema", function () {
     });
 
     it("should be an ObjectId Array", async function () {
-      event = Event({ name: "orange", code: "red", participants: [{}] });
+      event = Event({ name: "orange", code: "red", participants: {} });
       try {
         await event.save();
       } catch (e) {
@@ -108,7 +106,7 @@ describe("the Event schema", function () {
       }
       expect(err).to.be.instanceof(Error);
       expect(err).to.have.property("name", "ValidationError");
-      expect(err).to.have.property("message", "Event validation failed: participants.0: Cast to ObjectId failed for value \"{}\" at path \"participants\", participants: Cast to Array failed for value \"[ {} ]\" at path \"participants\"");
+      expect(err).to.have.property("message", "Event validation failed: participants: Cast to [ObjectId] failed for value \"[{}]\" at path \"participants\"");
     });
 
     it("should refer to the Member model", async function () {
