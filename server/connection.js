@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import * as _debug from "debug";
+import { debug as _debug } from "debug";
 import config from "../utils/config";
 
 const debug = _debug("db");
