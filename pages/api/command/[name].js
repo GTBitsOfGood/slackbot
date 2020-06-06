@@ -16,6 +16,8 @@ export default async (req, res) => {
   const { command: name, text: args, user_id: slackId } = req.body;
   let command;
 
+  console.log(req);
+
   // validate that the HTTP request was sent by Slack
   try {
     req.get = req.getHeader.bind(req);
