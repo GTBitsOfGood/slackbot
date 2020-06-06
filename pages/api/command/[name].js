@@ -16,10 +16,6 @@ export default async (req, res) => {
   const { command: name, text: args, user_id: slackId } = req.body;
   let command;
 
-  console.log(name, args, slackId);
-
-  console.log(req.query);
-
   // validate that the HTTP request was sent by Slack
   try {
     if (!validateSlackRequest(config.slackSigningSecret, req)) {
@@ -34,7 +30,7 @@ export default async (req, res) => {
 
   // import the Command object for this command
   try {
-    command = await import(`./../../../server/commands/${name}`);
+    command = await import(`./../../../server/commands/${name.slice(1)}`);
   } catch (e) {
     // TODO log that the command was not found.
     res.status(404).send("Not Found");
