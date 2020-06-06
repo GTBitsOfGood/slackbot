@@ -8,6 +8,11 @@ import { Request, Response } from "../../../server/models/command";
 // @desc    Call a command
 // @access  Public
 export default async (req, res) => {
+  if (!req.body) {
+    res.status(400).send("Bad Request");
+    return;
+  }
+
   const { command: name, text: args, user_id: slackId } = req.body;
   let command;
 
@@ -18,7 +23,6 @@ export default async (req, res) => {
       return;
     }
   } catch (e) {
-    console.log(e);
     // TODO log the error
     res.status(500).send("Internal Server Error");
     return;
