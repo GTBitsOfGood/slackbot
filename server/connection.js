@@ -13,7 +13,8 @@ export default async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false,
-      useCreateIndex: true
+      useCreateIndex: true,
+      connectTimeoutMS: 500
     })
     .catch((error) => {
       debug("Database connection failed. ↓");
