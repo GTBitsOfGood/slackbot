@@ -18,6 +18,7 @@ export default async (req, res) => {
       return;
     }
   } catch (e) {
+    console.log(e);
     // TODO log the error
     res.status(500).send("Internal Server Error");
     return;
