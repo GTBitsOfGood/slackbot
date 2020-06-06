@@ -11,7 +11,6 @@ import Role from "./role";
  * @class
  * @classdesc A bot command.
  * @param {Object} options The options object.
- * @param {string} options.name The name of the command.
  * @param {desc} options.desc The description of the command.
  * @param {Role} options.permissionLevel The permission level of the command;
  *  see {@link Role} for possible values. The permission level of a command
@@ -26,8 +25,6 @@ import Role from "./role";
  */
 function Command(options, handler) {
   if (typeof options !== "object") throw new TypeError("the options argument must be an object");
-  if (!options.name || typeof options.name !== "string") throw new TypeError("commands must have a name");
-  this.name = options.name;
   if (!options.desc || typeof options.desc !== "string") throw new TypeError("commands must have a description");
   this.desc = options.desc;
   if (typeof options.permissionLevel !== "string" || !Role.isRole(options.permissionLevel)) throw new TypeError("options.permissionLevel must be a valid role string. See the Role enum.");
