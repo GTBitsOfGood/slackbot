@@ -8,6 +8,9 @@ import { Request, Response } from "../../../server/models/command";
 // @desc    Call a command
 // @access  Public
 export default async (req, res) => {
+  console.log(config.dbName, process.env.DB_NAME);
+  console.log(typeof config.slackSigningSecret);
+  console.log(typeof process.env.SLACK_SIGNING_SECRET);
   if (!req.body) {
     res.status(400).send("Bad Request");
     return;
@@ -18,7 +21,6 @@ export default async (req, res) => {
 
   // validate that the HTTP request was sent by Slack
   try {
-    console.log(config.dbName, process.env.DB_NAME);
     console.log(typeof config.slackSigningSecret);
     if (!validateSlackRequest(config.slackSigningSecret, req)) {
       res.status(401).send("Unauthorized");
