@@ -46,7 +46,7 @@ function Command(options, handler) {
  * @throws {TypeError}
  */
 function Request(options) {
-  if (typeof options !== "undefined") throw new TypeError("the options argument must be an object");
+  if (typeof options !== "object") throw new TypeError("the options argument must be an object");
   this.member = options.member;
   this.args = options.args || [];
   if (!Array.isArray(this.args)) throw new TypeError("options.args must be an Array");
