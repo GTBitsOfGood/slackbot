@@ -30,8 +30,6 @@ function Command(options, handler) {
   this.name = options.name;
   if (!options.desc || typeof options.desc !== "string") throw new TypeError("commands must have a description");
   this.desc = options.desc;
-  if (typeof options.args !== "string") throw new TypeError("commands must have an args string");
-  this.args = options.args;
   if (typeof options.permissionLevel !== "string" || !Role.isRole(options.permissionLevel)) throw new TypeError("options.permissionLevel must be a valid role string. See the Role enum.");
   this.permissionLevel = options.permissionLevel;
   if (typeof handler !== "function") throw new TypeError("the handler argument must be a function");
