@@ -34,6 +34,7 @@ export default async (req, res) => {
   try {
     command = await import(`./../../../server/commands/${name.slice(1)}`);
   } catch (e) {
+    console.log(e, name.slice(1));
     // TODO log that the command was not found.
     res.status(404).send("Not Found");
     return;
