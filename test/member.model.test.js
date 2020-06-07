@@ -77,7 +77,7 @@ describe("the Member model", function () {
       }
       expect(err).to.be.instanceof(Error);
       expect(err).to.have.property("name", "MongoError");
-      expect(err.message).to.be.a("string").and.satisfy((msg) => msg.startsWith("E11000 duplicate key error collection: bog-bot.members index: slackId_1 dup key:"));
+      expect(err.message).to.be.a("string").and.satisfy((msg) => msg.startsWith("E11000 duplicate key error collection"));
 
       await clearModels(Member);
     });
@@ -142,7 +142,7 @@ describe("the Member model", function () {
       }
       expect(err).to.be.instanceof(Error);
       expect(err).to.have.property("name", "MongoError");
-      expect(err.message).to.be.a("string").and.satisfy((msg) => msg.startsWith("E11000 duplicate key error collection: bog-bot.members index: username_1 dup key: { username: \"johnsmith\" }"));
+      expect(err.message).to.be.a("string").and.satisfy((msg) => msg.startsWith("E11000 duplicate key error collection"));
 
       await clearModels(Member);
     });

@@ -54,7 +54,7 @@ describe("the Team model", function () {
       }
       expect(err).to.be.instanceof(Error);
       expect(err).to.have.property("name", "MongoError");
-      expect(err.message).to.be.a("string").and.satisfy((msg) => msg.startsWith("E11000 duplicate key error collection: bog-bot.teams index: name_1 dup key: { name: \"exec\" }"));
+      expect(err.message).to.be.a("string").and.satisfy((msg) => msg.startsWith("E11000 duplicate key error collection"));
 
       await clearModels(Team);
     });
