@@ -10,8 +10,14 @@ Bits of Good members have a lot on their plates. Between school, BoG, and other 
 Visit us at [bitsofgood.org](https://bitsofgood.org) to learn more.
 
 ## Getting Started
-```javascript
+### Install
+```
 yarn && yarn dev
+```
+
+### Tests
+```
+yarn test
 ```
 
 
