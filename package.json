@@ -6,7 +6,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --fix .",
-    "test": "mocha --require @babel/register",
+    "test": "mocha --require @babel/register --exit",
     "env-login": "bw logout && bw login --raw product@bitsofgood.org",
     "env-sync": "bw sync && bw list items --search 'bog-bot/env' | jq -r '.[].notes' > .env"
   },
