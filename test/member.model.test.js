@@ -1,8 +1,7 @@
 import * as chai from "chai";
-import connection from "../server/connection";
 import Member from "../server/models/member";
 import Team from "../server/models/team";
-import clearModels from "./util";
+import { connection, clearModels } from "./util";
 
 const { expect } = chai;
 let member;
@@ -81,7 +80,7 @@ describe("the Member model", function () {
       }
       expect(err).to.be.instanceof(Error);
       expect(err).to.have.property("name", "MongoError");
-      expect(err.message).to.be.a("string").and.satisfy((msg) => msg.startsWith("E11000 duplicate key error collection"));
+      expect(err.message).to.be.a("string").and.satisfy((msg) => msg.startsWith("E11000 duplicate key error"));
 
       await clearModels(Member);
     });
@@ -146,7 +145,7 @@ describe("the Member model", function () {
       }
       expect(err).to.be.instanceof(Error);
       expect(err).to.have.property("name", "MongoError");
-      expect(err.message).to.be.a("string").and.satisfy((msg) => msg.startsWith("E11000 duplicate key error collection"));
+      expect(err.message).to.be.a("string").and.satisfy((msg) => msg.startsWith("E11000 duplicate key error"));
 
       await clearModels(Member);
     });

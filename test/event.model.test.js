@@ -1,8 +1,7 @@
 import * as chai from "chai";
-import connection from "../server/connection";
 import Event from "../server/models/event";
 import Member from "../server/models/member";
-import clearModels from "./util";
+import { connection, clearModels } from "./util";
 
 /**
  * Event model tests

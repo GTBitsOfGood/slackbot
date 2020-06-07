@@ -1,8 +1,20 @@
-import connection from "../server/connection";
+import { MongoMemoryServer } from "mongodb-memory-server";
+import _connection from "../server/connection";
+import config from "../utils/config";
 
 /*
- * A place for utility functions used for testing.
+ * A place for utility testing functions.
  */
+
+const mongod = new MongoMemoryServer();
+
+/**
+* Return a connection to the test MongoDB server
+*/
+async function connection() {
+  const dbUrl = await mongod.getUri(config.dbName);
+  await _connection(config.dbName, dbUrl);
+}
 
 
 /**
@@ -16,4 +28,4 @@ async function clearModels(...models) {
   });
 }
 
-export default clearModels;
+export { connection, clearModels };
