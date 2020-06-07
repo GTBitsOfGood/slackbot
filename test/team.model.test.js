@@ -1,7 +1,7 @@
 import * as chai from "chai";
 import { TeamType, Team } from "../server/models/team";
 import { Member } from "../server/models/member";
-import { connection, clearModels } from "./util";
+import { connection, clearModels } from "../utils/test";
 
 const { expect } = chai;
 let team;
