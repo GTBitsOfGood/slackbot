@@ -1,12 +1,32 @@
 import mongoose from "mongoose";
-import Role from "./role";
+
+const { Schema, SchemaTypes } = mongoose;
+const { ObjectId } = SchemaTypes;
+
+/**
+ * The roles of a Bits of Good member.
+ * @enum {string}
+ */
+const Role = {
+  EXEC: "exec", // Exec members
+  LEADER: "leader", // Leadership: PM's, EM's, etc.
+  MEMBER: "member" // An ordinary member
+};
+
+/**
+   * Returns whether a string is a valid role.
+   * @param {string} string A string
+   */
+Role.isRole = function isRole(string) {
+  return Object.values(Role).indexOf(string) !== -1;
+};
+
+// prevent modification of the Role enum
+Object.freeze(Role);
 
 /**
  * The Member model for Bits of Good members.
  */
-
-const { Schema, SchemaTypes } = mongoose;
-const { ObjectId } = SchemaTypes;
 
 const memberSchema = new Schema({
   // alphanumeric string provided by slack -- cannot be
@@ -56,4 +76,6 @@ const memberSchema = new Schema({
   }
 });
 
-export default (mongoose.models.Member || mongoose.model("Member", memberSchema));
+const Member = mongoose.models.Member || mongoose.model("Member", memberSchema);
+
+export { Role, Member };

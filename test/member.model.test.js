@@ -1,6 +1,6 @@
 import * as chai from "chai";
-import Member from "../server/models/member";
-import Team from "../server/models/team";
+import { Member } from "../server/models/member";
+import { Team } from "../server/models/team";
 import { connection, clearModels } from "./util";
 
 const { expect } = chai;

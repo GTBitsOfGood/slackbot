@@ -1,5 +1,5 @@
 import * as chai from "chai";
-import Role from "../server/models/role";
+import { Role } from "../server/models/member";
 
 const { expect } = chai;
 

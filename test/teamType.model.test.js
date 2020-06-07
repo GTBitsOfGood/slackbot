@@ -1,5 +1,5 @@
 import * as chai from "chai";
-import TeamType from "../server/models/teamType";
+import { TeamType } from "../server/models/team";
 
 const { expect } = chai;
 
