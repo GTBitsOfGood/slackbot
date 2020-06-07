@@ -90,6 +90,14 @@ describe("the Team model", function () {
     });
 
     it("should be a TeamType enum value", async function () {
+      team = Team({ name: "NPP", type: "project" });
+      try {
+        await team.save();
+      } catch (e) {
+        err = e;
+      }
+      expect(err).to.be.undefined;
+
       team = Team({ name: "exec", type: "abcdef" });
       try {
         await team.save();

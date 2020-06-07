@@ -259,6 +259,21 @@ describe("the Member model", function () {
 
     it("should be a Role enum value", async function () {
       member = Member({
+        slackId: "fedcba",
+        username: "smithjohn",
+        firstName: "John",
+        lastName: "Smith",
+        role: "leader",
+        team: "578df3efb618f5141202a196"
+      });
+      try {
+        await member.save();
+      } catch (e) {
+        err = e;
+      }
+      expect(err).to.be.undefined;
+
+      member = Member({
         slackId: "abcdef",
         username: "johnsmith",
         firstName: "John",
