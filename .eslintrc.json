@@ -24,6 +24,7 @@
   "rules": {
     "comma-dangle": ["error", "never"],
     "quotes": [2, "double", { "avoidEscape": true }],
-    "no-underscore-dangle": "off"
+    "no-underscore-dangle": "off",
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
   }
 }

@@ -1,6 +1,6 @@
 import { MongoMemoryServer } from "mongodb-memory-server";
 import _connection from "../server/connection";
-import config from "../utils/config";
+import config from "./config";
 
 /*
  * A place for utility testing functions.
