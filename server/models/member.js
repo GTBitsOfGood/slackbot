@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import Role from "./role";
 
 const { Schema, SchemaTypes } = mongoose;
 const { ObjectId } = SchemaTypes;
@@ -32,7 +33,11 @@ const memberSchema = new Schema({
   // command. Current roles are "member", "leader", and "exec"
   role: {
     type: String,
-    default: "member"
+    default: "member",
+    validate: {
+      validator: (role) => Role.isRole(role),
+      message: (props) => `"${props.value}" is not a value of the Role enum`
+    }
   },
   // the team (project, committee, etc.) a member is in
   team: {
