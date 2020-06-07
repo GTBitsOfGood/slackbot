@@ -1,5 +1,9 @@
 import mongoose from "mongoose";
 
+/**
+ * The Event model for Bits of Good events.
+ */
+
 const { Schema, SchemaTypes } = mongoose;
 const { ObjectId } = SchemaTypes;
 

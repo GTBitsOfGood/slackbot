@@ -4,6 +4,10 @@ import Event from "../server/models/event";
 import Member from "../server/models/member";
 import clearModels from "./util";
 
+/**
+ * Event model tests
+ */
+
 const { expect } = chai;
 let event;
 let err;

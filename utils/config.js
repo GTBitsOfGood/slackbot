@@ -1,5 +1,9 @@
 import { config } from "dotenv";
 
+/**
+ * A place to put secrets, envvars, and other project configuration.
+ */
+
 if (process.env.NODE_ENV !== "production") config();
 
 export default {

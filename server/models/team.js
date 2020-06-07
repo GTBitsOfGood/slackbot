@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
 import TeamType from "./teamType";
 
+/**
+ * The Team model for Bits of Good teams.
+ */
+
 const { Schema, SchemaTypes } = mongoose;
 const { ObjectId } = SchemaTypes;
 

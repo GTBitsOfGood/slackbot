@@ -3,6 +3,10 @@ import TeamType from "../server/models/teamType";
 
 const { expect } = chai;
 
+/**
+ * TeamType model tests
+ */
+
 describe("the TeamType model", function () {
   it("should be an object", function () {
     expect(typeof TeamType).to.deep.eq("object");

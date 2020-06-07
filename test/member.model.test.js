@@ -8,6 +8,10 @@ const { expect } = chai;
 let member;
 let err;
 
+/**
+ * Member model tests
+ */
+
 describe("the Member model", function () {
   before(async function () {
     await connection();

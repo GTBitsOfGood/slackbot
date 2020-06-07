@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
 import Role from "./role";
 
+/**
+ * The Member model for Bits of Good members.
+ */
+
 const { Schema, SchemaTypes } = mongoose;
 const { ObjectId } = SchemaTypes;
 

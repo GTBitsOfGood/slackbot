@@ -3,6 +3,10 @@ import Role from "../server/models/role";
 
 const { expect } = chai;
 
+/**
+ * Role model tests
+ */
+
 describe("the Role model", function () {
   it("should be an object", function () {
     expect(typeof Role).to.deep.eq("object");
