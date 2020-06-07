@@ -2,13 +2,12 @@
   "env": {
     "browser": true,
     "es6": true,
-    "node": true
+    "node": true,
+    "mocha": true
   },
   "extends": [
     "plugin:react/recommended",
-    "airbnb",
-    "plugin:jest/recommended",
-    "plugin:jest/style"
+    "airbnb"
   ],
   "globals": {
     "Atomics": "readonly",
@@ -21,9 +20,10 @@
     "ecmaVersion": 11,
     "sourceType": "module"
   },
-  "plugins": ["react", "jest"],
+  "plugins": ["react"],
   "rules": {
     "comma-dangle": ["error", "never"],
-    "quotes": [2, "double", { "avoidEscape": true }]
+    "quotes": [2, "double", { "avoidEscape": true }],
+    "no-underscore-dangle": "off"
   }
 }
