@@ -42,23 +42,4 @@ describe("the Role model", function () {
       expect(Role.isRole(Role.MEMBER)).to.be.true;
     });
   });
-
-  describe("the hasPermission property", function () {
-    it("should be a function", function () {
-      expect(typeof Role.hasPermission).to.deep.eq("function");
-    });
-
-    it("should throw an error when the arguments are not roles", function () {
-      expect(Role.hasPermission).to.throw("the role must be one of the values of the Role enum");
-      expect(Role.hasPermission.bind(Role, "abcdef")).to.throw("the role must be one of the values of the Role enum");
-      expect(Role.hasPermission.bind(Role, Role.EXEC)).to.throw("the permissionLevel must be one of the values of the Role enum");
-      expect(Role.hasPermission.bind(Role, Role.EXEC, "abcdef")).to.throw("the permissionLevel must be one of the values of the Role enum");
-    });
-
-    it("should return whether a member with the given role is at the given permission level", function () {
-      expect(Role.hasPermission(Role.EXEC, Role.LEADER)).to.be.true;
-      expect(Role.hasPermission(Role.MEMBER, Role.EXEC)).to.be.false;
-      expect(Role.hasPermission(Role.LEADER, Role.LEADER)).to.be.true;
-    });
-  });
 });
