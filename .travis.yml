@@ -5,3 +5,4 @@ script:
 - yarn
 - yarn lint
 - yarn test
+services: mongodb
