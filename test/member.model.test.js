@@ -256,6 +256,25 @@ describe("the Member model", function () {
       expect(err).to.have.property("name", "ValidationError");
       expect(err).to.have.property("message", "Member validation failed: role: Cast to string failed for value \"{}\" at path \"role\"");
     });
+
+    it("should be a Role enum value", async function () {
+      member = Member({
+        slackId: "abcdef",
+        username: "johnsmith",
+        firstName: "John",
+        lastName: "Smith",
+        role: "abcdef",
+        team: "578df3efb618f5141202a196"
+      });
+      try {
+        await member.save();
+      } catch (e) {
+        err = e;
+      }
+      expect(err).to.be.instanceof(Error);
+      expect(err).to.have.property("name", "ValidationError");
+      expect(err).to.have.property("message", "Member validation failed: role: \"abcdef\" is not a value of the Role enum");
+    });
   });
 
   describe("the 'team' field", function () {
