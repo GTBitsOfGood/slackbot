@@ -11,7 +11,7 @@ const { expect } = chai;
 let event;
 let err;
 
-describe("the Event model", function () {
+describe("Event", function () {
   before(async function () {
     await connection();
     await clearModels(Member, Event);
