@@ -6,7 +6,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --fix .",
-    "test": "jest --passWithNoTests",
+    "test": "mocha --require @babel/register --exit",
     "env-login": "bw logout && bw login --raw product@bitsofgood.org",
     "env-sync": "bw sync && bw list items --search 'bog-bot/env' | jq -r '.[].notes' > .env"
   },
@@ -19,13 +19,19 @@
     "validate-slack-request": "^0.1.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
+    "@babel/register": "^7.10.1",
+    "chai": "^4.2.0",
+    "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-jest": "^23.13.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-mocha": "^7.0.1",
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-react-hooks": "^2.5.1",
-    "jest": "^26.0.1"
+    "mocha": "^7.2.0",
+    "mongodb-memory-server": "^6.6.1"
   }
 }

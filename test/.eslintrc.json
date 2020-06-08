@@ -1,0 +1,9 @@
+{
+    "extends": "plugin:mocha/recommended",
+    "plugins": ["mocha"],
+    "rules": {
+        "prefer-arrow-callback": "off",
+        "func-names": "off",
+        "no-unused-expressions": "off"
+    }
+}
