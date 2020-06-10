@@ -2,7 +2,7 @@
   "name": "bog-bot",
   "version": "0.1.0",
   "scripts": {
-    "dev": "DEBUG=db next dev",
+    "dev": "cross-env DEBUG=db next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint --fix .",
@@ -24,6 +24,7 @@
     "@babel/register": "^7.10.1",
     "@bitwarden/cli": "^1.10.0",
     "chai": "^4.2.0",
+    "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
