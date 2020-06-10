@@ -1,4 +1,4 @@
-import Role from "./role";
+import { Role } from "./member";
 
 /**
  * The handler function for a command; see {@link Command}.
@@ -11,13 +11,10 @@ import Role from "./role";
  * @class
  * @classdesc A bot command.
  * @param {Object} options The options object.
- * @param {desc} options.desc The description of the command.
- * @param {Role} options.permissionLevel The permission level of the command;
- *  see {@link Role} for possible values. The permission level of a command
- *  is hierarchial: for example, if the value is Role.MEMBER, then members with
- *  a role of either Role.LEADER or Role.EXEC would also have permission to
- *  call the command.
- * @param {handler} handler The handler function that gets executed
+ * @param {String} options.desc The description of the command.
+ * @param {Role|Role[]} options.roles The role(s) that can use this command; see {@link Role};
+ *  must include at least one role.
+ * @param {handler} handler The handler function that gets executed.
  *  when the command is called.
  *
  * @throws {Error}
@@ -25,10 +22,21 @@ import Role from "./role";
  */
 function Command(options, handler) {
   if (typeof options !== "object") throw new TypeError("the options argument must be an object");
-  if (!options.desc || typeof options.desc !== "string") throw new TypeError("commands must have a description");
+  if (typeof options.desc !== "string" || !options.desc.length) throw new TypeError("commands must have a description");
   this.desc = options.desc;
-  if (typeof options.permissionLevel !== "string" || !Role.isRole(options.permissionLevel)) throw new TypeError("options.permissionLevel must be a valid role string. See the Role enum.");
-  this.permissionLevel = options.permissionLevel;
+  if (Role.isRole(options.roles)) {
+    this.roles = [options.roles];
+  } else if (Array.isArray(options.roles)) {
+    if (options.roles.length === 0) {
+      throw new TypeError("the options.roles Array must have at least 1 element");
+    }
+    options.roles.forEach((role, i) => {
+      if (!Role.isRole(role)) throw new TypeError(`element ${i} of the options.roles Array is not a role string; see the Role enum`);
+    });
+    this.roles = options.roles;
+  } else {
+    throw new TypeError("options.roles must be an Array of role strings or role string; see the Role enum");
+  }
   if (typeof handler !== "function") throw new TypeError("the handler argument must be a function");
   this.handler = handler;
 }
