@@ -1,5 +1,5 @@
 import { Command } from "../models/command";
-import Role from "../models/role";
+import { Role } from "../models/member";
 
 export default new Command({
   desc: "Abcdef",
