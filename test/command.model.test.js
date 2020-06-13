@@ -7,6 +7,7 @@ import { Command, Request, Response } from "../server/models/command";
  */
 
 const { expect } = chai;
+let obj;
 let err;
 
 describe("Command + Request + Response", function () {
@@ -51,15 +52,13 @@ describe("Command + Request + Response", function () {
         });
 
         describe("the roles field", function () {
-          it("should be a role string (Array)", function () {
+          it("should be an optional role string (Array)", function () {
             try {
-              new Command({ desc: "Lorem ipsum", roles: 2 });
+              new Command({ desc: "Lorem ipsum" }, () => {});
             } catch (e) {
               err = e;
             }
-            expect(err).to.be.instanceof(Error);
-            expect(err).to.have.property("name", "TypeError");
-            expect(err).to.have.property("message", "options.roles must be an Array of role strings or role string; see the Role enum");
+            expect(err).to.be.undefined;
 
             try {
               new Command({ desc: "Lorem ipsum", roles: [] });
@@ -96,27 +95,89 @@ describe("Command + Request + Response", function () {
         });
       });
 
-      it("should run with no errors", function () {
-        try {
-          new Command({ desc: "Lorem ipsum", roles: Role.EXEC }, () => {});
-        } catch (e) {
-          err = e;
-        }
-        expect(err).to.be.undefined;
+      it("should create a Command object", function () {
 
         try {
-          new Command({ desc: "Lorem ipsum", roles: [Role.EXEC] }, () => {});
+          obj = new Command({ desc: "Lorem ipsum" }, () => {});
         } catch (e) {
           err = e;
         }
         expect(err).to.be.undefined;
+        expect(obj.desc).to.eql("Lorem ipsum");
+        expect(obj.roles).to.be.undefined;
+        expect(typeof obj.handler).to.eql("function");
 
         try {
-          new Command({ desc: "Lorem ipsum", roles: [Role.EXEC, Role.LEADER] }, () => {});
+          obj = new Command({ desc: "Lorem ipsum", roles: Role.EXEC }, () => {});
         } catch (e) {
           err = e;
         }
         expect(err).to.be.undefined;
+        expect(obj.desc).to.eql("Lorem ipsum");
+        expect(obj.roles).to.have.members([Role.EXEC]);
+        expect(typeof obj.handler).to.eql("function");
+
+        try {
+          obj = new Command({ desc: "Lorem ipsum", roles: [Role.EXEC] }, () => {});
+        } catch (e) {
+          err = e;
+        }
+        expect(err).to.be.undefined;
+        expect(obj.desc).to.eql("Lorem ipsum");
+        expect(obj.roles).to.have.members([Role.EXEC]);
+        expect(typeof obj.handler).to.eql("function");
+
+        try {
+          obj = new Command({ desc: "Lorem ipsum", roles: [Role.EXEC, Role.LEADER] }, () => {});
+        } catch (e) {
+          err = e;
+        }
+        expect(err).to.be.undefined;
+        expect(obj.desc).to.eql("Lorem ipsum");
+        expect(obj.roles).to.have.members([Role.EXEC, Role.LEADER]);
+        expect(typeof obj.handler).to.eql("function");
+      });
+    });
+  });
+
+  describe("Request", function () {
+    describe("constructor", function () {
+      describe("the options object", function () {
+        it("should be required", function () {
+          try {
+            new Request();
+          } catch (e) {
+            err = e;
+          }
+          expect(err).to.be.instanceof(Error);
+          expect(err).to.have.property("name", "TypeError");
+          expect(err).to.have.property("message", "the options argument must be an object");
+        });
+      });
+
+      it("should create a Request object", function () {
+        try {
+          obj = new Request({ member: {}, args: "abcdef" });
+        } catch (e) {
+          err = e;
+        }
+        expect(err).to.be.undefined;
+        expect(obj.member).to.eql({});
+        expect(obj.args).to.eql("abcdef");
+      });
+    });
+  });
+
+  describe("Response", function () {
+    describe("constructor", function () {
+      it("should create a Response object", function () {
+        try {
+          obj = new Response({});
+        } catch (e) {
+          err = e;
+        }
+        expect(err).to.be.undefined;
+        expect(obj.nextRes).to.eql({});
       });
     });
   });
