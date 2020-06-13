@@ -1,7 +1,7 @@
 {
   "build": {
     "env": {
-      "NPM_ONLY_PRODUCTION": 1
+      "NPM_ONLY_PRODUCTION": "1"
     }
   }
 }
