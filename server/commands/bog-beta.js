@@ -1,9 +1,20 @@
 import { Command } from "../models/command";
 // import { Role } from "../models/member";
 
-export default new Command({
-  desc: "Abcdef",
+const options = {
+  desc: "A dummy command",
   roles: false
-}, (req, res) => {
-  res.nextRes.status(200).send(`Hello, World! ${req.args.length}`);
-});
+};
+
+export default new Command(
+  options,
+  async (req, res) => {
+    try {
+      await res.reply({
+        text: "Hello, World!"
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+);
