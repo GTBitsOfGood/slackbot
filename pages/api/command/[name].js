@@ -51,7 +51,7 @@ export default async (req, res) => {
     return;
   }
 
-  // find the Member that has the Slack ID of the user who sent the command
+  // try to find the Member that has the Slack ID of the user who sent the command
   const member = await Member.findOne({ slackId }).catch();
 
   if (
