@@ -12,7 +12,8 @@ import { Role } from "./member";
  * @classdesc A bot command.
  * @param {Object} options The options object.
  * @param {String} options.desc The description of the command.
- * @param {Role|Role[]} options.roles The role(s) that can use this command; see {@link Role};
+ * @param {Role|Role[]} [options.roles] The role(s) that can use this command;
+ *  see {@link Role}; leave unset to handle role permissions yourself
  *  must include at least one role.
  * @param {handler} handler The handler function that gets executed.
  *  when the command is called.
@@ -34,8 +35,6 @@ function Command(options, handler) {
       if (!Role.isRole(role)) throw new TypeError(`element ${i} of the options.roles Array is not a role string; see the Role enum`);
     });
     this.roles = options.roles;
-  } else {
-    throw new TypeError("options.roles must be an Array of role strings or role string; see the Role enum");
   }
   if (typeof handler !== "function") throw new TypeError("the handler argument must be a function");
   this.handler = handler;
@@ -45,19 +44,15 @@ function Command(options, handler) {
  * @class
  * @classdesc A command request.
  * @param {Object} options The options object.
- * @param {Object} options.member The member who called the command; see the Member model.
- * @param {string} options.args The arguments string after the command.
+ * @param {Object} [options.member] The member who called the command; see the Member model.
+ * @param {string} [options.args] The arguments string after the command.
  *
  * @throws {TypeError}
  */
 function Request(options) {
   if (typeof options !== "object") throw new TypeError("the options argument must be an object");
   this.member = options.member;
-  this.args = options.args || [];
-  if (!Array.isArray(this.args)) throw new TypeError("options.args must be an Array");
-  this.args.forEach((arg) => {
-    if (typeof arg !== "string") throw new TypeError("the options.args Array for a Request must only contain strings.");
-  });
+  this.args = options.args;
 }
 
 /**
