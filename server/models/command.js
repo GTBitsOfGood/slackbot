@@ -12,12 +12,13 @@ import { Role } from "./member";
  * @classdesc A bot command.
  * @param {Object} options The options object.
  * @param {String} options.desc The description of the command.
- * @param {boolean} [options.membersOnly=true] Whether the command is for registered Members only; defaults to true.
+ * @param {boolean} [options.membersOnly=true] Whether the command is for registered
+ *    Members only; defaults to true.
  * @param {Role|Role[]} [options.roles] The role(s) that can use this command;
- *  see {@link Role}; leave unset to handle role permissions yourself
- *  must include at least one role.
+ *  see {@link Role}; leave this field unset to handle role permissions yourself;
+ *    if set, any non-members will be blocked.
  * @param {handler} handler The handler function that gets executed
- *  when the command is called.
+ *    when the command is called.
  *
  * @throws {Error}
  * @throws {TypeError}
