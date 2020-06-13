@@ -2,7 +2,7 @@ import * as validateSlackRequest from "validate-slack-request";
 import { debug as _debug } from "debug";
 import config from "../../../utils/config";
 import connection from "../../../server/connection";
-import Member from "../../../server/models/member";
+import { Member } from "../../../server/models/member";
 import { Request, Response } from "../../../server/models/command";
 
 const debug = _debug("command");
