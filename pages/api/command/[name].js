@@ -54,6 +54,24 @@ export default async (req, res) => {
   // find the Member that has the Slack ID of the user who sent the command
   const member = await Member.findOne({ slackId }).catch();
 
+  if (
+    // if the roles field is truthy...
+    command.roles
+    && (
+      // but this Slack user is not a registered Member
+      !member
+      // or they are a Member...
+      || (
+        // but their role is not allowed to use this command
+        Array.isArray(command.roles)
+        && !command.roles.contains(member.role)
+      )
+    )
+  ) {
+    // then tell the Slack user what's up
+    res.status(200).send("You do not have permission to use that command.");
+  }
+
   // run the handler for this command
   await command.handler(
     new Request({ member, args }),
