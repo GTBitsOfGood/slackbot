@@ -81,7 +81,7 @@ export default async (req, res) => {
   }
 
   // tell Slack we've received the HTTP request
-  res.status(200).send();
+  res.status(200).send("");
 
   // now run the handler for this command
   await command.handler(
