@@ -1,9 +1,9 @@
 import { Command } from "../models/command";
-import { Role } from "../models/member";
+// import { Role } from "../models/member";
 
 export default new Command({
   desc: "Abcdef",
-  permissionLevel: Role.MEMBER
+  roles: false
 }, (req, res) => {
   res.nextRes.status(200).send("Hello, World!");
 });
