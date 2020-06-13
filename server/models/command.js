@@ -12,9 +12,11 @@ import { Role } from "./member";
  * @classdesc A bot command.
  * @param {Object} options The options object.
  * @param {String} options.desc The description of the command.
- * @param {Role|Role[]} [options.roles] The role(s) that can use this command;
- *  see {@link Role}; leave unset to handle role permissions yourself
- *  must include at least one role.
+ * @param {Role|Role[]} [options.roles=true] The role(s) that can use this command;
+ *  see {@link Role}; can be a role string, an Array of role strings, or a boolean; if true,
+ *  only registered Members can use this command; if false, anyone can use this command;
+ *  defaults to true.
+ *  set to false to block only non-members.
  * @param {handler} handler The handler function that gets executed.
  *  when the command is called.
  *
@@ -35,6 +37,10 @@ function Command(options, handler) {
       if (!Role.isRole(role)) throw new TypeError(`element ${i} of the options.roles Array is not a role string; see the Role enum`);
     });
     this.roles = options.roles;
+  } else if (typeof options.roles === "boolean") {
+    this.roles = options.roles;
+  } else {
+    this.roles = true;
   }
   if (typeof handler !== "function") throw new TypeError("the handler argument must be a function");
   this.handler = handler;

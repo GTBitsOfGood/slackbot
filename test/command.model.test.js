@@ -52,7 +52,7 @@ describe("Command + Request + Response", function () {
         });
 
         describe("the roles field", function () {
-          it("should be an optional role string (Array)", function () {
+          it("should contain role strings if it is an Array", function () {
             try {
               new Command({ desc: "Lorem ipsum" }, () => {});
             } catch (e) {
@@ -96,7 +96,6 @@ describe("Command + Request + Response", function () {
       });
 
       it("should create a Command object", function () {
-
         try {
           obj = new Command({ desc: "Lorem ipsum" }, () => {});
         } catch (e) {
@@ -104,7 +103,17 @@ describe("Command + Request + Response", function () {
         }
         expect(err).to.be.undefined;
         expect(obj.desc).to.eql("Lorem ipsum");
-        expect(obj.roles).to.be.undefined;
+        expect(obj.roles).to.be.true;
+        expect(typeof obj.handler).to.eql("function");
+
+        try {
+          obj = new Command({ desc: "Lorem ipsum", roles: false }, () => {});
+        } catch (e) {
+          err = e;
+        }
+        expect(err).to.be.undefined;
+        expect(obj.desc).to.eql("Lorem ipsum");
+        expect(obj.roles).to.be.false;
         expect(typeof obj.handler).to.eql("function");
 
         try {
