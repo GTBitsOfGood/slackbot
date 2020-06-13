@@ -5,5 +5,5 @@ export default new Command({
   desc: "Abcdef",
   roles: Role.EXEC
 }, (req, res) => {
-  res.nextRes.status(200).send("Hello, World!");
+  res.nextRes.status(200).send(`Hello, World! ${req.args.length}`);
 });
