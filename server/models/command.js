@@ -1,3 +1,4 @@
+import * as bent from "bent";
 import { Role } from "./member";
 
 /**
@@ -65,14 +66,33 @@ function Request(options) {
  * @class
  * @classdesc A command response.
  *
- * @param {Object} res A Next.js request object
+ * @param {string} target The Slack response URL to send a response to
  */
-function Response(res) {
-  if (typeof res !== "object") throw new TypeError("the res argument must be an object");
-  this.nextRes = res;
+function Response(target) {
+  if (typeof target !== "string") throw new TypeError("the target parameter must be a string");
+  this.target = target;
 }
 
-// TODO add Response helper functions
+Response.prototype.send = async function send(response) {
+  return bent("POST")(this.target, {
+    ...response,
+    mrkdwn: true
+  });
+};
+
+Response.prototype.reply = function reply(response) {
+  return this.send({
+    ...response,
+    response_type: "in_channel"
+  });
+};
+
+Response.prototype.whisper = function whisper(response) {
+  return this.send({
+    ...response,
+    response_type: "ephemeral"
+  });
+};
 
 export {
   Command, Request, Response

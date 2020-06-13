@@ -16,7 +16,13 @@ export default async (req, res) => {
     return;
   }
 
-  const { command: name, text: args, user_id: slackId } = req.body;
+  const {
+    command: name,
+    text: args,
+    user_id: slackId,
+    response_url: target
+  } = req.body;
+
   let command;
 
   // validate that the HTTP request was sent by Slack
@@ -71,11 +77,15 @@ export default async (req, res) => {
   ) {
     // then tell the Slack user what's up
     res.status(200).send("You do not have permission to use that command 😢");
+    return;
   }
 
-  // run the handler for this command
+  // tell Slack we've received the HTTP request
+  res.status(200).send();
+
+  // now run the handler for this command
   await command.handler(
     new Request({ member, args }),
-    new Response(res)
+    new Response(target)
   );
 };

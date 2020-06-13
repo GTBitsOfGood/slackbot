@@ -179,14 +179,27 @@ describe("Command + Request + Response", function () {
 
   describe("Response", function () {
     describe("constructor", function () {
+      describe("the target parameter", function () {
+        it("should be a string", function () {
+          try {
+            new Response();
+          } catch (e) {
+            err = e;
+          }
+          expect(err).to.be.instanceof(Error);
+          expect(err).to.have.property("name", "TypeError");
+          expect(err).to.have.property("message", "the target parameter must be a string");
+        });
+      });
+
       it("should create a Response object", function () {
         try {
-          obj = new Response({});
+          obj = new Response("abc");
         } catch (e) {
           err = e;
         }
         expect(err).to.be.undefined;
-        expect(obj.nextRes).to.eql({});
+        expect(obj.target).to.eql("abc");
       });
     });
   });
