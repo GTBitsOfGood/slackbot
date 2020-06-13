@@ -10,8 +10,8 @@ export default new Command(
   options,
   async (req, res) => {
     try {
-      await res.whisper({
-        text: "Hello, World!"
+      await res.reply({
+        text: "Hi Daniel"
       });
     } catch (e) {
       console.log(e);
