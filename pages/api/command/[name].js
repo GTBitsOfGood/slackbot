@@ -70,7 +70,7 @@ export default async (req, res) => {
     )
   ) {
     // then tell the Slack user what's up
-    res.status(200).send("You do not have permission to use that command.");
+    res.status(200).send("You do not have permission to use that command 😢");
   }
 
   // run the handler for this command
