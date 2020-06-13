@@ -104,26 +104,29 @@ describe("Command + Request + Response", function () {
         }
         expect(err).to.be.undefined;
         expect(obj.desc).to.eql("Lorem ipsum");
+        expect(obj.membersOnly).to.eql(true);
         expect(obj.roles).to.be.undefined;
         expect(typeof obj.handler).to.eql("function");
 
         try {
-          obj = new Command({ desc: "Lorem ipsum", roles: Role.EXEC }, () => {});
+          obj = new Command({ desc: "Lorem ipsum", membersOnly: false, roles: Role.EXEC }, () => {});
         } catch (e) {
           err = e;
         }
         expect(err).to.be.undefined;
         expect(obj.desc).to.eql("Lorem ipsum");
+        expect(obj.membersOnly).to.eql(false);
         expect(obj.roles).to.have.members([Role.EXEC]);
         expect(typeof obj.handler).to.eql("function");
 
         try {
-          obj = new Command({ desc: "Lorem ipsum", roles: [Role.EXEC] }, () => {});
+          obj = new Command({ desc: "Lorem ipsum", membersOnly: true, roles: [Role.EXEC] }, () => {});
         } catch (e) {
           err = e;
         }
         expect(err).to.be.undefined;
         expect(obj.desc).to.eql("Lorem ipsum");
+        expect(obj.membersOnly).to.eql(true);
         expect(obj.roles).to.have.members([Role.EXEC]);
         expect(typeof obj.handler).to.eql("function");
 
@@ -134,6 +137,7 @@ describe("Command + Request + Response", function () {
         }
         expect(err).to.be.undefined;
         expect(obj.desc).to.eql("Lorem ipsum");
+        expect(obj.membersOnly).to.eql(true);
         expect(obj.roles).to.have.members([Role.EXEC, Role.LEADER]);
         expect(typeof obj.handler).to.eql("function");
       });
