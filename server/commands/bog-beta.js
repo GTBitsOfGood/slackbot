@@ -11,7 +11,7 @@ export default new Command(
   async (req, res) => {
     try {
       await res.reply({
-        text: "Hi Daniel"
+        text: "Hi Daniel 😉"
       });
     } catch (e) {
       console.log(e);
