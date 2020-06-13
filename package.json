@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
     "debug": "^4.1.1",
     "mongoose": "^5.9.16",
     "next": "9.4.4",
@@ -20,7 +21,6 @@
     "validate-slack-request": "^0.1.4"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.10.2",
     "@babel/register": "^7.10.1",
     "@bitwarden/cli": "^1.10.0",
     "chai": "^4.2.0",
