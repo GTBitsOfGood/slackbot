@@ -12,15 +12,15 @@ Visit us at [bitsofgood.org](https://bitsofgood.org) to learn more.
 ## Getting Started
 **Install**
 ```
-yarn
+npm install -D
 ```
 **Test**
 ```
-yarn test
+npm run test
 ```
 **Run**
 ```
-yarn dev
+npm run dev
 ```
 
 
