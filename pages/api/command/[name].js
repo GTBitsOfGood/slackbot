@@ -1,8 +1,11 @@
 import * as validateSlackRequest from "validate-slack-request";
+import { debug as _debug } from "debug";
 import config from "../../../utils/config";
 import connection from "../../../server/connection";
 import Member from "../../../server/models/member";
 import { Request, Response } from "../../../server/models/command";
+
+const debug = _debug("command");
 
 // @route   POST api/command/[name]
 // @desc    Call a command
@@ -24,8 +27,7 @@ export default async (req, res) => {
       return;
     }
   } catch (e) {
-    console.log(e);
-    // TODO log the error
+    debug(`Slack validation error: ${e}`);
     res.status(500).send("Internal Server Error");
     return;
   }
@@ -34,30 +36,23 @@ export default async (req, res) => {
   try {
     command = (await import(`./../../../server/commands/${name.slice(1)}`)).default;
   } catch (e) {
-    console.log(e, name.slice(1));
-    // TODO log that the command was not found.
+    debug(`command resolution error: ${e}`);
     res.status(404).send("Not Found");
     return;
   }
 
-  console.log("point A");
 
   // connect to the MongoDB database
   try {
     await connection();
   } catch (e) {
-    console.log(e);
-    // TODO log that the database connection failed.
+    debug(`MongoDB connection error: ${e}`);
     res.status(500).send("Internal Server Error");
     return;
   }
 
-  console.log("point B");
-
   // find the Member that has the Slack ID of the user who sent the command
   const member = await Member.findOne({ slackId }).catch();
-
-  console.log("point C");
 
   // run the handler for this command
   await command.handler(
